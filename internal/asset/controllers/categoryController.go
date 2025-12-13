@@ -44,22 +44,18 @@ func CreateCategory(c *gin.Context) {
 func UpdateCategory(c *gin.Context) {
 	var category model.Category
 
-	// گرفتن شناسه از پارامتر URL
 	categoryId := c.Param("id")
 
-	// پیدا کردن دسته‌بندی با شناسه مشخص
 	if err := db.DB.Where("id = ?", categoryId).First(&category).Error; err != nil {
 		c.JSON(http.StatusNotFound, gin.H{"message": "Category not found"})
 		return
 	}
 
-	// دریافت داده‌های جدید از بدنۀ درخواست
 	if err := c.ShouldBindJSON(&category); err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"message": "Invalid input data", "error": err.Error()})
 		return
 	}
 
-	// بروزرسانی رکورد
 	if err := db.DB.Save(&category).Error; err != nil {
 		c.JSON(http.StatusInternalServerError, gin.H{"message": "Error updating category"})
 		return
@@ -74,13 +70,11 @@ func DeleteCategory(c *gin.Context) {
 	var category model.Category
 	categoryId := c.Param("id")
 
-	// پیدا کردن رکورد بر اساس شناسه
 	if err := db.DB.Where("id = ?", categoryId).First(&category).Error; err != nil {
 		c.JSON(http.StatusNotFound, gin.H{"message": "Category not found"})
 		return
 	}
 
-	// حذف رکورد
 	if err := db.DB.Delete(&category).Error; err != nil {
 		c.JSON(http.StatusInternalServerError, gin.H{"message": "Error deleting category"})
 		return
