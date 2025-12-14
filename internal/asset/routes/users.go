@@ -7,9 +7,9 @@ import (
 )
 
 func SetupUserRoutes(r *gin.Engine) {
-	r.GET("/users", controllers.GetUsers)          // دریافت تمامی کاربران
-	r.POST("/users", controllers.CreateUser)       // ایجاد کاربر جدید
-	r.GET("/users/:id", controllers.GetUserByID)   // دریافت اطلاعات کاربر بر اساس شناسه
-	r.PUT("/users/:id", controllers.UpdateUser)    // بروزرسانی اطلاعات کاربر
-	r.DELETE("/users/:id", controllers.DeleteUser) // حذف کاربر
+	r.GET("api/v1/users", controllers.GetUsers)          // دریافت تمامی کاربران
+	r.POST("api/v1/users", controllers.CreateUser)       // ایجاد کاربر جدید
+	r.GET("api/v1/users/:id", controllers.GetUserByID)   // دریافت اطلاعات کاربر بر اساس شناسه
+	r.PUT("api/v1/users/:id", controllers.UpdateUser)    // بروزرسانی اطلاعات کاربر
+	r.DELETE("api/v1/users/:id", controllers.DeleteUser) // حذف کاربر
 }
