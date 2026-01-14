@@ -1,0 +1,15 @@
+@font-face {
+  font-family: 'Peyda';
+  src: url('@/assets/fonts/woff/PeydaWeb-Regular.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root, body, #app {
+  font-family: 'Peyda', Tahoma, sans-serif !important;
+}
+
+input, button, select, textarea, h2, p, label {
+  font-family: 'Peyda', Tahoma, sans-serif !important;
+}
